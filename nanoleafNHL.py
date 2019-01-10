@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Author: Noah Serr
+# Author: u/sriuba, Noah Serr
 
 import json
 from time import sleep
@@ -67,9 +67,12 @@ def main():
 
 			if len(plays) > allPlays:
 				allPlays = len(plays)
+				print(plays[len(plays)-1])
+				print(datetime.datetime.now().time())
 				currentPlay = plays[len(plays) - 1]
 
 				if currentPlay['result']['event'] == "Goal" and currentPlay['team']['name'] == team:
+					sleep(1)
 					goal()
 					reset(teamEffect, brightness)
 
