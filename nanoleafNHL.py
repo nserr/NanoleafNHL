@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Author: u/sriuba, Noah Serr
+# Author(s): u/sriuba, Noah Serr
 
 import json
 from time import sleep
@@ -14,7 +14,7 @@ from nanoleaf import Aurora
 import argparse
 
 
-# Returns data from nanoleaf.
+# Returns data from Nanoleaf.
 def info():
 	ipAddress = '192.168.0.25'
 	token = setup.generate_auth_token(ipAddress)
@@ -83,7 +83,7 @@ def main():
 			os._exit(0)
 	
 
-# Runs the goal light
+# Runs the goal light.
 def goal():
 	index = 0
 	while index < 5:
@@ -100,7 +100,7 @@ def reset(teamEffect, brightness):
 	myAurora.brightness = brightness
 
 
-# Creates link for current game's live feed
+# Creates link for current game's live feed.
 def get_live(url):
 	default = "https://statsapi.web.nhl.com"
 	liveURL = default + url
