@@ -72,11 +72,10 @@ def main():
 				currentPlay = plays[len(plays) - 1]
 
 				if currentPlay['result']['event'] == "Goal" and currentPlay['team']['name'] == team:
-					sleep(1)
 					goal()
 					reset(teamEffect, brightness)
 
-			sleep(5)
+			sleep(3)
 
 		except KeyboardInterrupt:
 			myAurora.off = True
@@ -88,9 +87,9 @@ def goal():
 	index = 0
 	while index < 5:
 		myAurora.rgb = [255,0,0] # Red
-		sleep(2) # Red delay (sec)
+		sleep(1.5) # Red delay (sec)
 		myAurora.rgb = [255,255,255] # White
-		sleep(0.5) # White delay (sec)
+		sleep(1.5) # White delay (sec)
 		index = index + 1
 
 
