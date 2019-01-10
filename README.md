@@ -10,4 +10,4 @@ To change the default team (go Flames!) and support your favorite NHL team, simp
 To change the lighting effects, replace the variable teamEffect in main with your desired Nanoleaf scene. To change the brightness it defaults to, replace the variable brightness in main with your desired brightness.
 
 # Setup
-Use any Bonjour Browser and locate your Nanoleaf panels' IP address. Replace the current IP with this one. Hold the power button on the panels controller for 5-7 seconds (until you see the light begin flashing), then run the program. It will get an authorization key for you
+Use any Bonjour Browser and locate your Nanoleaf panels' IP address. Replace the current IP with this one. Hold the power button on the panels controller for 5-7 seconds (until you see the light begin flashing), then run the program. It will get an authorization key for you and start. Now enjoy the game!
