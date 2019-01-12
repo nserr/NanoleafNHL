@@ -16,7 +16,7 @@ import argparse
 
 # Returns data from Nanoleaf.
 def info():
-	ipAddress = '192.168.0.25'
+	ipAddress = '192.168.0.10'
 	token = setup.generate_auth_token(ipAddress)
 	return ipAddress, token
 
@@ -87,9 +87,9 @@ def goal():
 	index = 0
 	while index < 5:
 		myAurora.rgb = [255,0,0] # Red
-		sleep(1.5) # Red delay (sec)
+		sleep(1) # Red delay (sec)
 		myAurora.rgb = [255,255,255] # White
-		sleep(1.5) # White delay (sec)
+		sleep(1) # White delay (sec)
 		index = index + 1
 
 
