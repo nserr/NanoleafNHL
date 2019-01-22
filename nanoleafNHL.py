@@ -34,6 +34,7 @@ class Game:
 def get_data(url):
 	response = requests.get(url)
 	response = response.json()
+	#response = (requests.get(url)).json()
 	return response
 
 
@@ -48,7 +49,14 @@ def get_games(team):
 		if team in game.away or team in game.home:
 			return game
 
+
+# Creates link for current game's live feed.
+def get_live(url):
+	default = "https://statsapi.web.nhl.com"
+	liveURL = default + url
+	return liveURL
 	
+
 def main():
 	team = "Calgary Flames"
 	teamEffect = "Flames"
@@ -85,7 +93,7 @@ def main():
 # Runs the goal light.
 def goal():
 	index = 0
-	while index < 5:
+	while index < 4:
 		myAurora.rgb = [255,0,0] # Red
 		sleep(1) # Red delay (sec)
 		myAurora.rgb = [255,255,255] # White
@@ -97,13 +105,6 @@ def goal():
 def reset(teamEffect, brightness):
 	myAurora.effect = teamEffect
 	myAurora.brightness = brightness
-
-
-# Creates link for current game's live feed.
-def get_live(url):
-	default = "https://statsapi.web.nhl.com"
-	liveURL = default + url
-	return liveURL
 
 
 if __name__ == "__main__":
