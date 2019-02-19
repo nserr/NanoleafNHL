@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-# Author(s): u/sriuba, Noah Serr
-
 import json
 from time import sleep
 import sys
