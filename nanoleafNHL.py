@@ -11,14 +11,6 @@ from nanoleaf import setup
 from nanoleaf import Aurora
 import argparse
 
-
-# Returns data from Nanoleaf.
-def info():
-	ipAddress = '192.168.0.10'
-	token = setup.generate_auth_token(ipAddress)
-	return ipAddress, token
-
-
 # Constructor for game data.
 class Game:
 	def __init__(self, game_info):
@@ -27,33 +19,6 @@ class Game:
 		self.away  = game_info['teams']['away']['team']['name']
 		self.home  = game_info['teams']['home']['team']['name']
 
-
-# Gets JSON response.
-def get_data(url):
-	response = requests.get(url)
-	response = response.json()
-	#response = (requests.get(url)).json()
-	return response
-
-
-# Returns game data.
-def get_games(team):
-	url = "https://statsapi.web.nhl.com/api/v1/schedule" 
-	data = get_data(url)
-
-	for game_info in data['dates'][0]['games']:
-		game = Game(game_info)
-
-		if team in game.away or team in game.home:
-			return game
-
-
-# Creates link for current game's live feed.
-def get_live(url):
-	default = "https://statsapi.web.nhl.com"
-	liveURL = default + url
-	return liveURL
-	
 
 def main():
 	team = "Calgary Flames"
@@ -86,6 +51,39 @@ def main():
 		except KeyboardInterrupt:
 			myAurora.off = True
 			os._exit(0)
+
+
+# Returns data from Nanoleaf.
+def info():
+	ipAddress = '192.168.0.10'
+	token = setup.generate_auth_token(ipAddress)
+	return ipAddress, token
+
+
+# Returns game data.
+def get_games(team):
+	url = "https://statsapi.web.nhl.com/api/v1/schedule" 
+	data = get_data(url)
+
+	for game_info in data['dates'][0]['games']:
+		game = Game(game_info)
+
+		if team in game.away or team in game.home:
+			return game
+
+
+# Gets JSON response.
+def get_data(url):
+	response = requests.get(url)
+	response = response.json()
+	return response
+
+
+# Creates link for current game's live feed.
+def get_live(url):
+	default = "https://statsapi.web.nhl.com"
+	liveURL = default + url
+	return liveURL
 	
 
 # Runs the goal light.
