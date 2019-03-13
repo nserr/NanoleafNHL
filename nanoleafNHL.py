@@ -74,8 +74,7 @@ def get_games(team):
 
 # Gets JSON response.
 def get_data(url):
-	response = requests.get(url)
-	response = response.json()
+	response = (requests.get(url)).json()
 	return response
 
 
@@ -88,13 +87,11 @@ def get_live(url):
 
 # Runs the goal light.
 def goal():
-	index = 0
-	while index < 4:
-		myAurora.rgb = [255,0,0] # Red
-		sleep(1) # Red delay (sec)
-		myAurora.rgb = [255,255,255] # White
-		sleep(1) # White delay (sec)
-		index = index + 1
+	for x in range(0,4):
+		myAurora.rgb = [255,0,0] 		# Red
+		sleep(1) 						# Red delay
+		myAurora.rgb = [255,255,255] 	# White
+		sleep(1) 						# White delay
 
 
 # Resets to previous colors and brightness.
