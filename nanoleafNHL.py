@@ -11,6 +11,7 @@ from nanoleaf import setup
 from nanoleaf import Aurora
 import argparse
 
+
 # Constructor for game data.
 class Game:
 	def __init__(self, game_info):
@@ -21,13 +22,19 @@ class Game:
 
 
 def main():
+	##########################
 	team = "Calgary Flames"
 	teamEffect = "Flames"
+	brightness = 65
+	ipAddress = '192.168.0.10'
+	##########################
+	
+	token = setup.generate_auth_token(ipAddress)
+	myAurora = Aurora(ipAddress, token)
 	game = get_games(team)
 	live = get_live(game.link)
 	myAurora.on = True
 	myAurora.effect = teamEffect
-	brightness = 65
 	myAurora.brightness = brightness
 	allPlays = 0
 
@@ -38,7 +45,7 @@ def main():
 
 			if len(plays) > allPlays:
 				allPlays = len(plays)
-				print(plays[len(plays)-1])
+				print(plays[len(plays) - 1])
 				print(datetime.datetime.now().time())
 				currentPlay = plays[len(plays) - 1]
 
@@ -53,17 +60,9 @@ def main():
 			os._exit(0)
 
 
-# Returns data from Nanoleaf.
-def info():
-	ipAddress = '192.168.0.10'
-	token = setup.generate_auth_token(ipAddress)
-	return ipAddress, token
-
-
 # Returns game data.
-def get_games(team):
-	url = "https://statsapi.web.nhl.com/api/v1/schedule" 
-	data = get_data(url)
+def get_games(team): 
+	data = get_data("https://statsapi.web.nhl.com/api/v1/schedule")
 
 	for game_info in data['dates'][0]['games']:
 		game = Game(game_info)
@@ -101,6 +100,4 @@ def reset(teamEffect, brightness):
 
 
 if __name__ == "__main__":
-	ipAddress, token = info()
-	myAurora = Aurora(ipAddress, token)
 	main()
