@@ -26,11 +26,7 @@ def main():
 	team = "Calgary Flames"
 	teamEffect = "Flames"
 	brightness = 65
-	ipAddress = '192.168.0.10'
 	##########################
-	
-	token = setup.generate_auth_token(ipAddress)
-	myAurora = Aurora(ipAddress, token)
 	game = get_games(team)
 	live = get_live(game.link)
 	myAurora.on = True
@@ -100,4 +96,9 @@ def reset(teamEffect, brightness):
 
 
 if __name__ == "__main__":
+	##########################
+	ipAddress = '192.168.0.10'
+	##########################
+	token = setup.generate_auth_token(ipAddress)
+	myAurora = Aurora(ipAddress, token)
 	main()
