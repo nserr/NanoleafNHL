@@ -1,7 +1,7 @@
 Author: Noah Serr
 
 # NHLNanoleaf
-A format for Nanoleaf Aurora light panels to imitate a goal light when an NHL team scores, synced live with the game.
+A program for Nanoleaf Aurora light panels to imitate a goal light when an NHL team scores, synced live with the game.
 
 # Team Select
 To change the default team (go Flames!) and support your favorite NHL team, simply replace the string in the variable team in main() with your team (full name).
